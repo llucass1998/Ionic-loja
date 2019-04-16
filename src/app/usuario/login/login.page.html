@@ -4,21 +4,54 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="!uid">
   <form #fc="ngForm" (ngSubmit)="onSubmit(fc)">
     <ion-item>
-      <ion-label>E-mail ou login</ion-label>
-      <ion-input type="text" name='email' [(ngModel)]="email" required></ion-input>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input
+        type="text"
+        name="email"
+        [(ngModel)]="email"
+        required
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Senha</ion-label>
-      <ion-input type="password" name='pws' [(ngModel)]="pws" required></ion-input>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input
+        type="password"
+        name="pws"
+        [(ngModel)]="pws"
+        minlength="6"
+        required
+      ></ion-input>
     </ion-item>
 
     <ion-item lines="none">
-      <ion-button [disabled] = "!fc.valid" >Entrar</ion-button>
+      <ion-button type="submit" [disabled]="!fc.valid">Entrar</ion-button>
+      <ion-button type="reset" [routerLink]="'/'">Cancelar</ion-button>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button (click)="addUser()" expand="block">Novo Usuário</ion-button>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button (click)="loginG()" expand="block"
+        >Login pelo Google</ion-button
+      >
     </ion-item>
   </form>
+</ion-content>
 
+<ion-content *ngIf="afAuth.user | async as user"> 
+    <ion-label>Nome: </ion-label>
+    <ion-text> {{ user.displayName - user.uid }} </ion-text> <br>
+    <ion-label>E-mail: </ion-label>
+    <ion-text> {{ user.email }} </ion-text>
+
+    <ion-item lines="none">
+        <ion-button (click)="logout()" color="danger">Sair</ion-button>
+      </ion-item>
+    <ion-text> </ion-text>
 </ion-content>
