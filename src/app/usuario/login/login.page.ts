@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AlertController } from "@ionic/angular";
 import { auth } from "firebase";
+import { UsuarioService } from "../usuario.service";
 
 @Component({
   selector: "app-login",
@@ -12,10 +13,11 @@ export class LoginPage implements OnInit {
   private uid: string;
   private email: string;
   private pws: string;
-
+  
   constructor(
     private afAuth: AngularFireAuth,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public usuarioService: UsuarioService
   ) {}
 
   ngOnInit() {}
@@ -44,8 +46,8 @@ export class LoginPage implements OnInit {
   }
 
   logout() {
-    this.afAuth.auth.signOut();
     this.uid = null;
+    this.usuarioService.logout();
   }
 
   addUser() {

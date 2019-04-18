@@ -10,32 +10,35 @@
           <ion-item color="primary" lines="none" [routerLink]="['/login']">
             <ion-avatar slot="start">
               <img
-                src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                src="{{usuario.foto}}"
               />
             </ion-avatar>
-            <ion-label>Usuario</ion-label>
+            <ion-label>{{usuario.nome}}</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-header>
 
       <ion-content>
-        <ion-list>
+        <ion-list  lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item
               [routerDirection]="'root'"
               [routerLink]="[p.url]"
-              lines="none"
-            >
+              lines="none">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{ p.title }}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-item lines="none">
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="logout()">
             <ion-icon slot="start" name="log-out"></ion-icon>
-            LogOut
+            <ion-label>LogOut</ion-label>
           </ion-item>
+          </ion-menu-toggle>
+
         </ion-list>
       </ion-content>
     </ion-menu>

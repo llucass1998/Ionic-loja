@@ -44,14 +44,14 @@
   </form>
 </ion-content>
 
-<ion-content *ngIf="afAuth.user | async as user"> 
-    <ion-label>Nome: </ion-label>
-    <ion-text> {{ user.displayName - user.uid }} </ion-text> <br>
-    <ion-label>E-mail: </ion-label>
-    <ion-text> {{ user.email }} </ion-text>
+<ion-content *ngIf="(afAuth.user | async) as user">
+  <img src= '{{ user.photoURL }}' alt="" /> <br />
+  <ion-label>Nome: </ion-label>
+  <ion-text> {{ user.displayName }} </ion-text> <br />
+  <ion-label>E-mail: </ion-label>
+  <ion-text> {{ user.email }} </ion-text>
+  <ion-label>ID: </ion-label> <br />
+  <ion-text> {{ user.uid }} </ion-text>
 
-    <ion-item lines="none">
-        <ion-button (click)="logout()" color="danger">Sair</ion-button>
-      </ion-item>
-    <ion-text> </ion-text>
+  <ion-text> </ion-text>
 </ion-content>
