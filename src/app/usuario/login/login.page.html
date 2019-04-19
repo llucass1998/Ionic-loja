@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Login de Usuário</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="!uid">
+<ion-content>
   <form #fc="ngForm" (ngSubmit)="onSubmit(fc)">
     <ion-item>
       <ion-label position="floating">E-mail</ion-label>
@@ -37,21 +40,7 @@
     </ion-item>
 
     <ion-item lines="none">
-      <ion-button (click)="loginG()" expand="block"
-        >Login pelo Google</ion-button
-      >
+      <ion-button (click)="loginG()" expand="block">Login pelo Google</ion-button>
     </ion-item>
   </form>
-</ion-content>
-
-<ion-content *ngIf="(afAuth.user | async) as user">
-  <img src= '{{ user.photoURL }}' alt="" /> <br />
-  <ion-label>Nome: </ion-label>
-  <ion-text> {{ user.displayName }} </ion-text> <br />
-  <ion-label>E-mail: </ion-label>
-  <ion-text> {{ user.email }} </ion-text>
-  <ion-label>ID: </ion-label> <br />
-  <ion-text> {{ user.uid }} </ion-text>
-
-  <ion-text> </ion-text>
 </ion-content>

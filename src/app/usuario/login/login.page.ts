@@ -3,6 +3,8 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AlertController } from "@ionic/angular";
 import { auth } from "firebase";
 import { UsuarioService } from "../usuario.service";
+import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-login",
@@ -13,11 +15,13 @@ export class LoginPage implements OnInit {
   private uid: string;
   private email: string;
   private pws: string;
-  
+
   constructor(
     private afAuth: AngularFireAuth,
     public alertController: AlertController,
-    public usuarioService: UsuarioService
+    public usuarioService: UsuarioService,
+    private camera: Camera,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -33,11 +37,11 @@ export class LoginPage implements OnInit {
         res => {
           console.log(res);
           this.uid = res.user.uid;
+          this.router.navigate(['/'])
         },
         erro => {
           console.log(erro);
           this.presentAlert("Erro!", "Usuário não encontrado!");
-          
         }
       )
       .catch(erros => {
@@ -65,12 +69,13 @@ export class LoginPage implements OnInit {
   }
 
   loginG() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(
-      res => {
+    this.afAuth.auth
+      .signInWithPopup(new auth.GoogleAuthProvider())
+      .then(res => {
         console.log(res);
         this.uid = res.user.uid;
-      }
-    );
+        this.router.navigate(['/'])
+      });
   }
 
   async presentAlert(tipo: string, texto: string) {

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil do Usuário</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="{{ usuario.foto }}" alt="" /> <ion-badge>99</ion-badge> <br />
+  <ion-label>Nome: </ion-label>
+  <ion-text> {{ usuario.nome }} </ion-text> <br />
+  <ion-label>E-mail: </ion-label>
+  <ion-text> {{ usuario.email }} </ion-text> <br />
+  <ion-label>ID: </ion-label> <br />
+  <ion-text> {{ usuario.uid }} </ion-text>
+
+  <ion-button color="tertiary" shape="round">
+    <ion-icon name="camera" (click)="getPhoto()"></ion-icon>
+  </ion-button>
+
+  <ion-item *ngFor="let c of preview" lines="none">
+    <img src="{{ c }}" alt="" />
+  </ion-item>
+</ion-content>
