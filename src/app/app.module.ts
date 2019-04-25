@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
 //Ionic
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 //FireBase
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment.prod';
 
@@ -26,6 +28,8 @@ import { environment } from '../environments/environment.prod';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   providers: [
     StatusBar,

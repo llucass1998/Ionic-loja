@@ -22,7 +22,12 @@ const routes: Routes = [
   {
     path: "perfil",
     loadChildren: "./usuario/perfil/perfil.module#PerfilPageModule"
-  }
+  },
+  {
+    path: 'cadastro', loadChildren: './produto/cadastro/cadastro.module#CadastroPageModule'
+  },
+  { path: 'perfil/:key', loadChildren: './produto/perfil/perfil.module#PerfilPageModule' }
+
 ];
 
 @NgModule({
@@ -31,4 +36,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
