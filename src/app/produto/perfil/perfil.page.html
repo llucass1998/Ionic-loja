@@ -7,6 +7,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  
+<ion-content *ngIf="produto$ | async as produto">
+  <ion-item>
+    <ion-label position="floating">Nome: </ion-label>
+    <ion-text> {{ produto.nome }} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descrição: </ion-label>
+    <ion-text> {{ produto.descricao }} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Quantidade: </ion-label>
+    <ion-text> {{ produto.quant }} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Valor: </ion-label>
+    <ion-text> {{ produto.valor }} </ion-text>
+  </ion-item>
+
+  <ion-button color="tertiary" shape="round">
+    <ion-icon name="trash"></ion-icon>
+  </ion-button>
+
+  <ion-item *ngFor="let c of preview" lines="none">
+    <img src="{{ c }}" alt="" />
+  </ion-item>
+
+  <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let c of foto">
+      </ion-slide>
+    </ion-slides>
 </ion-content>

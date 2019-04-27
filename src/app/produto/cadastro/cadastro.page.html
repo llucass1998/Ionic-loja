@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="onSubmit()">
+  <form #fc="ngForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Nome</ion-label>
       <ion-input type="text" class="form-control" [(ngModel)]="produto.nome" name="nome" required></ion-input>
@@ -29,12 +29,19 @@
       <ion-input type="number" class="form-control" [(ngModel)]="produto.valor" name="valor" required>
       </ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Foto</ion-label>
-      <ion-input type="" class="form-control" [(ngModel)]="produto.foto" name="foto" required>
-      </ion-input>
-    </ion-item>
 
     <ion-button type="submit">Salvar</ion-button>
   </form>
+
+  <ion-item>
+    <ion-button color="tertiary" shape="round">
+      <ion-icon name="camera" (click)="getPhoto()"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let foto of produto.foto">
+      <img [src]="foto">
+    </ion-slide>
+  </ion-slides>
 </ion-content>

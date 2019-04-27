@@ -10,8 +10,8 @@ export class ProdutoService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  getProduto(id: string) {
-    this.db.list('/items', ref => ref.orderByChild('key').equalTo(id)).valueChanges().pipe();
+  get(id: string) {
+    return this.db.object('/produto/' + id).valueChanges();
   }
 
   insert(produto: Produto) {

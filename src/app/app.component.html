@@ -7,12 +7,7 @@
         </ion-toolbar> -->
 
         <ion-menu-toggle auto-hide="false">
-          <ion-item
-            color="primary"
-            lines="none"
-            [routerLink]="['/login']"
-            *ngIf="!usuario.uid"
-          >
+          <ion-item color="primary" lines="none" [routerLink]="['/login']" *ngIf="!usuario.uid">
             <ion-avatar slot="start">
               <img src="{{ usuario.foto }}" />
             </ion-avatar>
@@ -20,12 +15,7 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle auto-hide="false">
-          <ion-item
-            color="primary"
-            lines="none"
-            [routerLink]="['/perfil']"
-            *ngIf="usuario.uid"
-          >
+          <ion-item color="primary" lines="none" [routerLink]="['/perfil']" *ngIf="usuario.uid">
             <ion-avatar slot="start">
               <img src="{{ usuario.foto }}" />
             </ion-avatar>
@@ -37,11 +27,7 @@
       <ion-content>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item
-              [routerDirection]="'root'"
-              [routerLink]="[p.url]"
-              lines="none"
-            >
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" lines="none">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{ p.title }}

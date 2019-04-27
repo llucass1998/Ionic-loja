@@ -5,5 +5,5 @@ export class Produto {
   quant: number = 0;
   valor: number;
   ativo: boolean = true;
-  foto: string[];
+  foto: string[] = [];
 }
