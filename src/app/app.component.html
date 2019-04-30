@@ -7,7 +7,7 @@
         </ion-toolbar> -->
 
         <ion-menu-toggle auto-hide="false">
-          <ion-item color="primary" lines="none" [routerLink]="['/login']" *ngIf="!usuario.uid">
+          <ion-item color="danger" lines="none" [routerLink]="['/login']" *ngIf="!usuario.uid">
             <ion-avatar slot="start">
               <img src="{{ usuario.foto }}" />
             </ion-avatar>
@@ -15,7 +15,7 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle auto-hide="false">
-          <ion-item color="primary" lines="none" [routerLink]="['/perfil']" *ngIf="usuario.uid">
+          <ion-item color="danger" lines="none" [routerLink]="['/perfil']" *ngIf="usuario.uid">
             <ion-avatar slot="start">
               <img src="{{ usuario.foto }}" />
             </ion-avatar>
@@ -45,7 +45,7 @@
           <ion-menu-toggle auto-hide="false">
             <ion-item (click)="logout()">
               <ion-icon slot="start" name="log-out"></ion-icon>
-              <ion-label>LogOut</ion-label>
+              <ion-label>Sair</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

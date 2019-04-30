@@ -26,7 +26,10 @@ const routes: Routes = [
   {
     path: 'cadastro', loadChildren: './produto/cadastro/cadastro.module#CadastroPageModule'
   },
-  { path: 'perfil/:key', loadChildren: './produto/perfil/perfil.module#PerfilPageModule' }
+  { path: 'perfil/:key', loadChildren: './produto/perfil/perfil.module#PerfilPageModule' },
+
+  { path: 'edit/:key', loadChildren: './produto/edit/edit.module#EditPageModule' }
+
 
 ];
 
